@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linda.baseball.repository.TeamRepository">
+
+<insert id="save">
+	INSERT INTO team (name, stadiumId, createDate)
+	VALUES (#{name}, #{stadiumId}, now())
+</insert>
+
+<select id="findAll" resultType="com.linda.baseball.web.dto.TeamRespDto">
+	select t.id, t.name, s.name as stadiumName, t.createDate
+	from team t INNER JOIN stadium s
+	ON t.stadiumId = s.id;
+</select>
+
+<delete id="deleteById">
+	DELETE FROM team
+	WHERE id= #{id}
+</delete>
+
+</mapper>
