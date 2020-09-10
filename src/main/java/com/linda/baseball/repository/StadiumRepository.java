@@ -8,6 +8,4 @@ public interface StadiumRepository {
 	public void save(Stadium stadium);
 	public List<Stadium> findAll();
 	public void deleteById(int id);
-	//public List<Stadium>findByid(int id);
-
-}
+	}

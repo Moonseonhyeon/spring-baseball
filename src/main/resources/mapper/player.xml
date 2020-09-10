@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linda.baseball.repository.PlayerRepository">
+
+<insert id="save">
+	INSERT INTO player (name, teamId, position, createDate)
+	VALUES (#{name}, #{teamId}, #{position}, now())
+</insert>
+
+<select id="findAll" resultType="com.linda.baseball.web.dto.PlayerRespDto">
+<![CDATA[
+	select p.id, p.name as playerName, p.position, p.createDate, t.name as teamName
+	, ( SELECT COUNT(*) + 1 FROM player WHERE name < p.name ) as No
+	from player p INNER JOIN team t
+	ON p.teamId = t.id
+	order by No;
+	]]>
+</select>
+
+<delete id="deleteById">
+	DELETE FROM player
+	WHERE id= #{id}
+</delete>
+
+<select id="findAllAsPosition" resultType="com.linda.baseball.web.dto.PlayerAsPositionRespDto">
+		SELECT POSITION,
+	MAX(if(teamId=4,name,""))"kia",
+	MAX(if(teamId=5,name,""))"lotte",
+	MAX(if(teamId=6,name,""))"nc"
+	FROM player
+	GROUP BY position;
+</select>
+
+</mapper>

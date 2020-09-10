@@ -13,7 +13,7 @@ public class TestController {
 	
 	private final StadiumRepository stadiumRepository;
 	
-	@GetMapping({"index"})
+	@GetMapping({"/index"})
 	public String TestIndex() {
 		System.out.println("안녕");
 		return "index";

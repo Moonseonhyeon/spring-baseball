@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://kit.fontawesome.com/f24559dc3c.js"></script>
-<meta charset="UTF-8">
-<title>야구장 등록 페이지</title>
-</head>
-<body>
+
+<%@include file="../layout/header.jsp"%>
+<div class="container">
 <h1>야구장 등록 페이지</h1>
 <hr>
 <form action="/stadium" method="post">
@@ -22,6 +17,6 @@
 </button>
 </form>
 
+</div>
 
-</body>
-</html>
+<%@include file="../layout/footer.jsp"%>
